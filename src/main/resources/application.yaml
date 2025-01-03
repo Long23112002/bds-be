@@ -1,0 +1,66 @@
+spring:
+  application:
+    name: bds-project
+
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+
+  redis:
+    host: localhost
+    port: 6379
+    connect-timeout: 60000
+  #  data:
+  #    mongodb:
+  #      host: ${MONGODB_HOST}
+  #      port: ${MONGODB_PORT}
+  #      database: ${MONGODB_DATABASE}
+  #      username: ${MONGODB_USERNAME}
+  #      password: ${MONGODB_PASSWORD}
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bds-db
+    username: root
+    password: 12345678
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+        type:
+          jsonb: com.vladmihalcea.hibernate.type.json.JsonBinaryType
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        register-types: auto
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: false
+    serialization:
+      fail-on-empty-beans: false
+
+server:
+  port: ${PORT_SERVER:8888}
+
+jwt:
+  key: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION_MS}
+refresh-token:
+  expiration: ${JWT_REFRESH_EXPIRATION_MS}
+  key: ${JWT_REFRESH_SECRET}
+
+upload:
+  dir: ${UPLOAD_DIR}
+url:
+  server: ${URL_SERVER}
+  port: ${PORT_SERVER}
+  host: ${HOST_SERVER}
+
+
+
+
+
