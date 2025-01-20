@@ -1,6 +1,6 @@
 package com.example.bdsbe.entities.posts;
 
-import com.example.bdsbe.enums.PackageStatus;
+import com.example.bdsbe.enums.PostStatus;
 import java.time.LocalDateTime;
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ public class LogsTransaction {
   @JoinColumn(name = "package_price_transaction", nullable = false)
   private PackagePriceTransaction packagePriceTransaction;
 
-  @Column(name = "userApproved", nullable = false)
+  @Column(name = "userapproved", nullable = false)
   private Long userApproved;
 
   @Column(nullable = false, precision = 10, scale = 2)
@@ -30,11 +30,11 @@ public class LogsTransaction {
 
   @Column(name = "status")
   @Enumerated(EnumType.STRING)
-  private PackageStatus status;
+  private PostStatus status;
 
   @Column(name = "old_status")
   @Enumerated(EnumType.STRING)
-  private PackageStatus oldStatus;
+  private PostStatus oldStatus;
 
   @Column(name = "is_deleted")
   private Boolean isDeleted = false;

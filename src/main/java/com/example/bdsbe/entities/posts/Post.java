@@ -1,5 +1,8 @@
 package com.example.bdsbe.entities.posts;
 
+import com.example.bdsbe.entities.publics.District;
+import com.example.bdsbe.entities.publics.Province;
+import com.example.bdsbe.entities.publics.Ward;
 import com.example.bdsbe.entities.users.User;
 import com.example.bdsbe.entities.value.File;
 import com.example.bdsbe.enums.Demand;
@@ -26,7 +29,7 @@ import org.hibernate.annotations.*;
 @Where(clause = "is_deleted = false")
 @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 @TypeDef(name = "pgsql_enum", typeClass = PostgreSQLEnumType.class)
-public class Post {
+public class Post implements Cloneable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -77,14 +80,20 @@ public class Post {
   @Column(name = "link_map", columnDefinition = "TEXT")
   private String linkMap;
 
-  @Column(name = "province_code")
-  private String provinceCode;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "province_code")
+  @NotFound(action = NotFoundAction.IGNORE)
+  private Province province;
 
-  @Column(name = "district_code")
-  private String districtCode;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "district_code")
+  @NotFound(action = NotFoundAction.IGNORE)
+  private District district;
 
-  @Column(name = "ward_code")
-  private String wardCode;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "ward_code")
+  @NotFound(action = NotFoundAction.IGNORE)
+  private Ward ward;
 
   @Column(name = "street")
   private String street;
@@ -147,4 +156,14 @@ public class Post {
 
   @Column(name = "code_plant")
   private String codePlant;
+
+  @Override
+  public Post clone() {
+    try {
+      Post clone = (Post) super.clone();
+      return clone;
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
 }

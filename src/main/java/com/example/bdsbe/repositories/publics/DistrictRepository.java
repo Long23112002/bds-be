@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface DistrictRepository extends JpaRepository<District, String> {
 
   Page<District> findByProvinceCode(String provinceCode, Pageable pageable);
+
+  District findByCode(String code);
 }

@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PackageService {
@@ -22,6 +23,7 @@ public class PackageService {
 
   @Autowired private PackagePriceRepository packagePriceRepository;
 
+  @Transactional
   public Package save(PackageRequest request) {
     Package apackage = new Package();
     apackage.setName(request.getName());

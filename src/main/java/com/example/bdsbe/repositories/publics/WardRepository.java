@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface WardRepository extends JpaRepository<Ward, String> {
 
   Page<Ward> findByDistrictCode(String districtCode, Pageable pageable);
+
+  Ward findByCode(String code);
 }

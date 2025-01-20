@@ -1,6 +1,7 @@
 package com.example.bdsbe.dtos.response;
 
 import com.example.bdsbe.entities.users.Role;
+import java.sql.Timestamp;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,4 +29,6 @@ public class UserResponse {
   private Double wallet;
 
   private Set<Role> roles;
+
+  private Timestamp createdAt;
 }

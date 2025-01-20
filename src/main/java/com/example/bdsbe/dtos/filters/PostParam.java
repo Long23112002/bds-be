@@ -9,6 +9,8 @@ import lombok.Data;
 @Data
 public class PostParam {
 
+  private Long userId;
+
   private Double minPrice;
 
   private Double maxPrice;
@@ -42,4 +44,10 @@ public class PostParam {
   private Demand demand;
 
   private List<String> media;
+
+  private Boolean isExpired = false;
+
+  public Demand getDemand() {
+    return demand != null ? demand : Demand.SELL;
+  }
 }

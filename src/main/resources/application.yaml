@@ -60,6 +60,14 @@ url:
   port: ${PORT_SERVER}
   host: ${HOST_SERVER}
 
+telegram:
+  url: https://api.telegram.org/bot
+  bot-post-online:
+    token: ${BOT_POST_ONLINE_TOKEN}
+    chat-id: ${BOT_POST_ONLINE_CHAT_ID}
+    token-bot-error: ${BOT_ERROR_TOKEN}
+    chat-id-bot-error: ${BOT_ERROR_CHAT_ID}
+
 
 
 
